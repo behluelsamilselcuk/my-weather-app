@@ -21,27 +21,7 @@ Es gibt **zwei einfache Wege**, ein neues Projekt aus diesem Template zu erstell
 
 ---
 
-## ✅ 1. Methode: GitHub → „Use this template" (Template Repository)
- 
-> Empfohlen – funktioniert direkt über die GitHub-Weboberfläche, sofern das Repo als Template markiert ist.
- 
-1. Das Template-Repository auf GitHub öffnen
-2. Den grünen Button **„Use this template"** klicken
-3. **„Create a new repository"** auswählen
-4. Einen neuen Repository-Namen vergeben, z. B.
-   ```
-   my-new-frontend
-   ```
-5. Sichtbarkeit wählen (Public / Private)
-6. Auf **„Create repository"** klicken
-7. GitHub erzeugt eine vollständige Kopie dieses Templates
-8. Fertig – du kannst direkt losentwickeln
- 
-> Falls das Repo **nicht** als Template markiert ist, nutze Methode 2.
- 
----
- 
-## ✅ 2. Methode: Lokal klonen → Remote auf neues Repo setzen
+## ✅ Methode: Lokal klonen → Remote auf neues Repo setzen
  
 Falls du lieber lokal arbeitest oder das Repo modifizieren willst:
  
