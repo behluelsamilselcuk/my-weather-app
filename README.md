@@ -1,3 +1,33 @@
+# **Wetter-App**
+
+Dies wird eine Wetter-Frontend-Web-Anwendung.
+Als Bundler wird webpack genutzt und um das Projekt zu strukturieren, wird mein persönliches Template genutzt:
+https://github.com/behluelsamilselcuk/frontend-webpack-starter-main
+Es wird ein Suchfeld geben, wo man nach der Stadt, von dem man die Wetterdaten erfahren will, suchen und auswählen kann.
+Dementsprechend werden die Daten zurückgegeben, welche im ersten Schritt in der Konsole geloggt werden.
+
+---
+
+## Projektstruktur
+
+```
+- 📁 dist/
+- 📁 node_modules/
+- 📁 src/
+    - 📁 css/
+    - 📄 index.js
+    - 📄 template.html
+- 📄 .gitignore
+- 📄 package-lock.json
+- 📄 package.json
+- 📄 README.md
+- 📄 webpack.common.js
+- 📄 webpack.dev.js
+- 📄 webpack.prod.js
+```
+
+----------------------------------------------------------
+
 # 📄 **README – Verwendung des Webpack-Template-Projekts**
 
 Dies ist ein **Webpack-Template-Projekt**, das als Grundlage für neue Frontend-Projekte dient.
