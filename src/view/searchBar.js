@@ -1,4 +1,6 @@
-export class SearchBar {
+import "./searchBar.css"
+
+class SearchBar {
     constructor() {
         
     }
@@ -16,3 +18,5 @@ export class SearchBar {
         })
     }
 }
+
+export default SearchBar;

@@ -8,6 +8,4 @@ async function getWeatherInfos(place) {
     }
 }
 
-export {
-    getWeatherInfos
-}
+export default getWeatherInfos;

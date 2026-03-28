@@ -2,8 +2,9 @@ import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
-import { getWeatherInfos } from './model/weatherInformation';
-import { SearchBar } from './view/searchBar';
+import getWeatherInfos from './model/weatherInformation';
+import SearchBar from './view/searchBar';
+import "./css/global.css"
 
 // Das ist der Controller
 
