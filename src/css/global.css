@@ -32,8 +32,9 @@ header button {
 #content {
     height: 80vh;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     /* background: no-repeat center url("../img/"); */
     background-size: cover;
 }
