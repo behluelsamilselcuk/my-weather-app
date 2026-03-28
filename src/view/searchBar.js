@@ -2,19 +2,18 @@ import "./searchBar.css"
 
 class SearchBar {
     constructor() {
-        
+        this.searchBar = document.querySelector("#searchbar");
+        this.submitBtn = document.querySelector("#senden-button");
     }
 
-    returnSearchedPlace() {
-        return new Promise((resolve) => {
-            const searchBar = document.querySelector("#searchbar");
-            const submitBtn = document.querySelector("#senden-button");
+    getValue() {
+        return this.searchBar.value;
+    }
 
-            submitBtn.addEventListener("click", (event) => {
-                event.preventDefault();
-                const searched = searchBar.value;
-                resolve(searched);
-            })
+    onSubmit(callback) {
+        this.submitBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            callback();
         })
     }
 }

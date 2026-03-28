@@ -2,7 +2,7 @@ import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
-import getWeatherInfos from './model/weatherInformation';
+import Weather from './model/weatherInformation';
 import SearchBar from './view/searchBar';
 import "./css/global.css"
 
@@ -10,11 +10,11 @@ import "./css/global.css"
 
 // getWeatherInfos("frankfurt");
 // getWeatherInfos(searchedPlace);
+const searchBar = new SearchBar();
+const weather = new Weather();
 
-async function search() {
-    const search = new SearchBar();
-    const searchedPlace = await search.returnSearchedPlace()
-    getWeatherInfos(searchedPlace);
-}
-
-search()
+searchBar.onSubmit(async () => {
+    const place = searchBar.getValue();
+    const data = await weather.getInfos(place);
+    console.log(data);
+});
