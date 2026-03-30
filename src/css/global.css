@@ -1,64 +1,190 @@
+/* ============================================================
+   global.css — Basis, Variablen, Reset, Typografie, Layout
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Outfit:wght@200;400;600;800&display=swap');
+
+/* ── CSS-Variablen ─────────────────────────────────────── */
 :root {
-    --black: #000;
-    --white: #fff;
-    --grey: grey;
+    /* Farben */
+    --bg-deep:        #070d1a;
+    --bg-mid:         #0d1b35;
+    --bg-surface:     #112244;
+    --accent-blue:    #4a9eff;
+    --accent-cyan:    #00d4ff;
+    --accent-glow:    rgba(74, 158, 255, 0.25);
+
+    --text-primary:   #e8f0ff;
+    --text-secondary: #8ba4cc;
+    --text-muted:     #4a6080;
+
+    --glass-bg:       rgba(255, 255, 255, 0.05);
+    --glass-border:   rgba(255, 255, 255, 0.10);
+    --glass-shadow:   0 8px 32px rgba(0, 0, 0, 0.45);
+
+    /* Typografie */
+    --font-display:   'Outfit', sans-serif;
+    --font-body:      'Nunito', sans-serif;
+
+    /* Abstände */
+    --space-xs:  4px;
+    --space-sm:  8px;
+    --space-md:  16px;
+    --space-lg:  32px;
+    --space-xl:  64px;
+
+    /* Radien */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 999px;
+
+    /* Übergänge */
+    --transition-fast:   150ms ease;
+    --transition-normal: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow:   500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Body & Hintergrund ────────────────────────────────── */
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    /* Atmosphärischer Himmels-Gradient */
+    background-image:
+        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(30, 60, 130, 0.55) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(10, 40, 90, 0.45) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(7, 13, 26, 1) 50%, transparent 100%);
+    background-attachment: fixed;
 }
 
+/* Dezente Sternchen-Textur im Hintergrund */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.18) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 15%, rgba(255,255,255,0.12) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.10) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 55%, rgba(255,255,255,0.14) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 85%, rgba(255,255,255,0.08) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.09) 0%, transparent 100%);
+    background-size: 300px 300px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Header ────────────────────────────────────────────── */
 header {
-    height: 15vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-lg);
+
+    background: rgba(7, 13, 26, 0.75);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 header h1 {
-    font-size: 3em;
-    margin: 0;
-    padding: 5px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-header button {
-    border: none;
-    background-color: transparent;
-    color: var(--white);
-    font-size: 1.2em;
-}
-
+/* ── Content ───────────────────────────────────────────── */
 #content {
-    height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    /* background: no-repeat center url("../img/"); */
-    background-size: cover;
+    margin: 100px auto;
 }
 
-header,
+/* ── Footer ────────────────────────────────────────────── */
 footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 44px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 200px;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: var(--white);
-}
+    padding: 0 var(--space-lg);
 
-footer {
-    height: 5vh;
+    background: rgba(7, 13, 26, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+
+    font-size: 0.78rem;
+    color: var(--text-muted);
 }
 
 footer p {
-    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
 }
-#developer,
-#github {
-    color: var(--white);
+
+footer a {
+    color: var(--text-secondary);
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    transition: color var(--transition-fast);
+}
+
+footer a:hover {
+    color: var(--accent-cyan);
+}
+
+#developer {
+    font-weight: 600;
+}
+
+#github {
+    font-size: 1rem;
+    color: inherit;
+}
+
+/* ── Utility: Glassmorphism-Card ───────────────────────── */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--glass-shadow);
 }

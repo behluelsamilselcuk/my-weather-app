@@ -23,6 +23,9 @@ class Content {
             const temperature_of_day = document.createElement("p");
             const description_of_day = document.createElement("p");
 
+            date.classList.add("day-date");
+            temperature_of_day.classList.add("day-temp");
+            // description_of_day.classList.add("day-desc");
             
             date.textContent = day.datetime;
             temperature_of_day.textContent = day.temp;

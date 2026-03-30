@@ -1,0 +1,233 @@
+/* ============================================================
+   content.css — Hauptinhalt, Wetterdaten, 14-Tage-Vorschau
+   ============================================================ */
+
+/* ── Wrapper ───────────────────────────────────────────── */
+#content {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 72px - 44px);
+    margin-top: 72px;
+    margin-bottom: 44px;
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+/* ── Ausgabe-Bereich ───────────────────────────────────── */
+#output {
+    width: 100%;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+
+    /* Einblend-Animation beim Laden */
+    animation: fadeSlideUp 0.5s var(--transition-normal) both;
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Aktuelle Wetterkarte ──────────────────────────────── */
+.weather-card-main {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+    padding: var(--space-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dekorativer Glow-Akzent oben rechts */
+.weather-card-main::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(74, 158, 255, 0.18) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+/* ── Stadtname ─────────────────────────────────────────── */
+#searched-city {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: var(--space-xs);
+}
+
+/* ── Zeitzone ──────────────────────────────────────────── */
+#timezone {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    opacity: 0.85;
+    margin-bottom: var(--space-md);
+}
+
+/* ── Temperatur ────────────────────────────────────────── */
+#temperature {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+/* Großer Temperatur-Wert — via JS erreichbar mit span.temp-value */
+#temperature .temp-value {
+    font-size: 3.5rem;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Beschreibung ──────────────────────────────────────── */
+#description {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* ── 14-Tage-Sektion ───────────────────────────────────── */
+#output h3 {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: var(--space-sm);
+}
+
+/* ── Tage-Liste ────────────────────────────────────────── */
+#next-days {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* Einzelner Tageseintrag */
+#next-days li {
+    display: grid;
+    grid-template-columns: 100px 60px 1fr;
+    align-items: center;
+    gap: var(--space-md);
+
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 12px var(--space-md);
+
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+
+    cursor: default;
+}
+
+#next-days li:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(74, 158, 255, 0.25);
+    transform: translateX(2px);
+    color: var(--text-primary);
+}
+
+/* Gestaffelte Einblend-Animation für Listeneinträge */
+#next-days li:nth-child(1)  { animation-delay: 0.05s; }
+#next-days li:nth-child(2)  { animation-delay: 0.10s; }
+#next-days li:nth-child(3)  { animation-delay: 0.15s; }
+#next-days li:nth-child(4)  { animation-delay: 0.20s; }
+#next-days li:nth-child(5)  { animation-delay: 0.25s; }
+#next-days li:nth-child(6)  { animation-delay: 0.30s; }
+#next-days li:nth-child(7)  { animation-delay: 0.35s; }
+#next-days li:nth-child(8)  { animation-delay: 0.40s; }
+#next-days li:nth-child(9)  { animation-delay: 0.45s; }
+#next-days li:nth-child(10) { animation-delay: 0.50s; }
+#next-days li:nth-child(11) { animation-delay: 0.55s; }
+#next-days li:nth-child(12) { animation-delay: 0.60s; }
+#next-days li:nth-child(13) { animation-delay: 0.65s; }
+#next-days li:nth-child(14) { animation-delay: 0.70s; }
+
+#next-days li {
+    animation: fadeSlideUp 0.4s ease both;
+}
+
+/* ── Spalten innerhalb jedes Tageseintrags ─────────────── */
+#next-days li .day-date {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+#next-days li .day-temp {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: right;
+    white-space: nowrap;
+}
+
+#next-days li .day-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Responsive Anpassungen ────────────────────────────── */
+@media (max-width: 640px) {
+    #content {
+        padding: var(--space-lg) var(--space-sm) var(--space-md);
+    }
+
+    #searched-city {
+        font-size: 1.6rem;
+    }
+
+    #temperature .temp-value {
+        font-size: 2.8rem;
+    }
+}
