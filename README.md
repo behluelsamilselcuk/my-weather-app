@@ -26,6 +26,8 @@ Das Entwurfsmuster ist nach MVC ausgerichtet, die die Anwendung in drei Komponen
   - 📁 css/
   - 📁 model/
     - 📄 weatherInformation.js
+  - 📁 utils/
+    - 📄 convert-unit.js
   - 📁 view/
     - 📁 content/
     - 📁 searchBar/
